@@ -52,7 +52,7 @@ class Player(BasePlayer):
     group = models.ForeignKey(Group, null = True)
     # </built-in>
 
-    contribution = models.CurrencyField(min=0,max=Constants.endowment)
+    contribution = models.CurrencyField(choices=[0,Constants.endowment],widget=widgets.RadioSelect())
 
     def other_player(self):
         """Returns other player in group. Only valid for 2-player groups."""
