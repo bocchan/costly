@@ -1,0 +1,50 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    第{{subsession.round_number}}ラウンドの結果
+{% endblock %}
+
+{% block content %}
+
+	<p>
+		供給量は、<br/>
+		あなた({{player.role}}):{{player.contribution}}<br/>
+		他のプレイヤーの公表された（0は10%の確率で間違いかもしれない）供給量は、<br/>
+		{% for p in player.other_player %}
+		プレイヤー{{p}}:{{p.record}}<br/>
+		{% endfor %}
+		<br/>
+		Strong punishment(x6)は以下の表のように行われました。<br/>
+	</p>
+	<table class="table">
+		<tr>
+			<td></td>
+			<td>for player1</td>
+			<td>for player2</td>
+			<td>for player3</td>
+		</tr>
+		<tr>
+			<td>あなた</td>
+			<td>{{player.punishment_p1}}</td>
+			<td>{{player.punishment_p2}}</td>
+			<td>{{player.punishment_p3}}</td>
+		</tr>
+		{% for p in player.other_player %}
+		<tr>
+			<td>player{{p}}</td>
+			<td>{{p.punishment_p1}}</td>
+			<td>{{p.punishment_p2}}</td>
+			<td>{{p.punishment_p3}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	<p>
+		そして、差引後利得は、<br/>
+		あなた：{{player.payoff}}<br/>
+		でした。
+	<p/>
+    {% next_button %}
+{% endblock %}
+
+

@@ -1,0 +1,24 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    結果画面
+{% endblock %}
+
+{% block content %}
+
+	<p>
+		供給量は、<br/>
+		あなた:{{player.contribution}}<br/>
+		他のプレイヤーの公表された（0は10%の確率で間違いかもしれない）供給量は、
+		{% for p in player.other_player %}
+		プレイヤー{{p}}:{{p.record}}<br/>
+		{% endfor %}
+		でした。
+		<br/>
+		そして、あなたの合計利得は{{player.payoff}}でした。
+	</p>
+    {% next_button %}
+{% endblock %}
+
+
