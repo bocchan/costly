@@ -1,0 +1,27 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Punishment
+{% endblock %}
+
+{% block content %}
+
+	<p>
+		供給量はそれぞれ、<br/>
+		あなた:{{player.contribution}}<br/>
+		{% for q in player.other_player %}
+		{{q.role}}:{{q.contribution}}<br/>
+		{% endfor %}
+		でした。<br/>
+	</p>
+	player1へのパニッシュメント
+	{% formfield player.punishment_p1 %}
+	player2へのパニッシュメント
+	{% formfield player.punishment_p2 %}
+	player3へのパニッシュメント
+	{% formfield player.punishment_p3 %}
+    {% next_button %}
+{% endblock %}
+
+

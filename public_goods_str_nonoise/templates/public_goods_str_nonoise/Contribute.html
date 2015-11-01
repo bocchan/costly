@@ -1,0 +1,23 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Contribute
+{% endblock %}
+
+{% block content %}
+
+	<p>
+		{{subsession.round_number}}ラウンド
+		あなたは、{{player.role}}です
+		strong punishment、ノイズなしの公共財供給ゲーム<br/>
+		プレイヤー人数は{{Constants.players_per_group}}で、
+		各プレイヤーには毎ラウンド{{Constants.endowment}}ポイントが与えられています。<br/>
+		また、このゲームにおける公共財の効用は私的財の{{Constants.efficiency_factor}}倍となっています。
+	</p>
+
+	{% formfield player.contribution with label="How much will you contribute to the project?" %}
+
+    {% next_button %}
+
+{% endblock %}
